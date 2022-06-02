@@ -1,0 +1,1 @@
+A kódokat másoljuk ki és illeszük be a js.do weboldalra a jobb átláthatóság miatt.
