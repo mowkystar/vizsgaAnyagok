@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jelszo Megjelenito Gomb</title>
+</head>
+
+<body>
+    <form>
+        <input type="password" name="password" id="jelszoMezo">
+        <input type="button" value="Jelszó megjelenítése" onclick="Lathatosag()">
+    </form>
+    <script>
+        function Lathatosag() {
+            let allapot=jelszoMezo.getAttribute("type");
+            if(allapot=="text"){
+                jelszoMezo.setAttribute("type","password");
+            }
+            else{
+                jelszoMezo.setAttribute("type","text");
+            }
+        }
+        function Lathatosag() {
+            
+            if(jelszoMezo.type=="text"){ // vagy az eredeti alapján: (jelszoMezo.getAttribute("type")=="text")
+                jelszoMezo.setAttribute("type","password");
+            }
+            else{
+                jelszoMezo.setAttribute("type","text");
+            }
+        }
+    </script>
+</body>
+
+</html>

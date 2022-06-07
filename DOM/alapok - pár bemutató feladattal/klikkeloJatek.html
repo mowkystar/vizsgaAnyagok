@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klikkelő játék</title>
+    <style>
+    body{
+        font-weight:bold;
+        color:white;
+    }
+    #ugraloFelirat{
+        position:absolute;
+        top:0px;
+        left:0px;
+        width:100px;
+        padding:20px;
+        text-align: center;
+        background-color:rgba(0,0,0,0.6);
+    }
+    #szamlalo{
+        position:fixed;
+        top:0px;
+        left:50%;
+        width:50px;
+       transform:translate(-25px);
+       text-align: center;
+        background-color:rgba(0,0,0,0.8);
+        border-bottom-left-radius:20px;
+        border-bottom-right-radius:20px;
+    }
+    </style>
+</head>
+<body>
+    <div id="szamlalo">0</div>
+    <div id="ugraloFelirat">Kattints Ide!</div>
+    <script>
+        ugraloFelirat.addEventListener("click",ugras);
+        function ugras(){
+            let randomTopErtek=Math.round(Math.random()*1080);
+            let randomLeftErtek=Math.round(Math.random()*1920);
+            document.querySelector("#ugraloFelirat").style.top=randomTopErtek+"px";
+            document.querySelector("#ugraloFelirat").style.left=randomLeftErtek+"px";
+            let klikkSzam=Number(document.querySelector("#szamlalo").innerHTML)+1;
+            document.querySelector("#szamlalo").innerHTML=klikkSzam;
+        }
+    </script>
+</body>
+</html>

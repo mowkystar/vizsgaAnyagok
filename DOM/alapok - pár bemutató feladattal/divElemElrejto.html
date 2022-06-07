@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIV elem megjelenito/elrejto</title>
+    <style>
+        #elemMegjelenito {
+            width: 200px;
+            padding: 20px;
+            text-align: center;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            font-weight: bold;
+        }
+
+        #megjelenitendoElem {
+            width: 240px;
+            height: 400px;
+            margin: 10px auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="elemMegjelenito">Elem megjelenítése</div>
+    <div id="megjelenitendoElem"></div>
+
+    <script>
+        elemMegjelenito.addEventListener("click",megjelenitendoElemLathatosag);
+        function megjelenitendoElemLathatosag(){
+            let allapot=document.getElementById("megjelenitendoElem").style.display;
+            if(allapot!="block")
+            {
+                document.getElementById("megjelenitendoElem").style.display="block";
+                document.getElementById("elemMegjelenito").innerHTML="Elem bezárása";
+            }
+            else{
+                document.getElementById("megjelenitendoElem").style.display="none";
+                document.getElementById("elemMegjelenito").innerHTML="Elem megjelenítése";
+            }
+
+        }
+    </script>
+</body>
+
+</html>

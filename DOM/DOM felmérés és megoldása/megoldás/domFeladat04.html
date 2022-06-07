@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM feladatsor 04</title>
+</head>
+
+<body>
+    <div id="uzenoFelulet">Üzenet helye</div>
+    <label for="email1">E-mail cím:</label>
+    <input type="email" id="email1"></input><br>
+    <label for="email2">E-mail cím megerősítése:</label>
+    <input type="email" id="email2"></input><br>
+    <button type="button" id="ellenorzesGomb">E-mail címek ellenőrzése</button>
+    <script>
+        function validEmail(vizsgalandoEmail) {
+            let minta = /^[0-9a-z\.-]+@([0-9a-z-]+\.)+[a-z]{2,4}$/i;
+            if (minta.test(vizsgalandoEmail))//== true val egyenértékű a feltételünk
+            {
+                return true;
+            }
+            else {
+                return false;
+            }
+
+        }
+        ellenorzesGomb.addEventListener("click", emailEllenorzo);
+        function emailEllenorzo() {
+            let emailCim1 = document.querySelector("#email1").value;
+            let emailCim2 = document.querySelector("#email2").value;
+            let uzenoResz = document.querySelector("#uzenoFelulet");
+            uzenoResz.style.backgroundColor="red";
+
+            if (emailCim1 == "" && emailCim2 == "") {
+                uzenoResz.innerHTML="Nincs kitoltve egyik mező sem!";
+            }
+            else if (emailCim1 == "") {
+                uzenoResz.innerHTML="Nincs kitoltve az e-mail mező!";
+            }
+
+            else if (emailCim2 == "") {
+                uzenoResz.innerHTML="Nincs kitoltve az e-mail megerősítése mező!";
+            }
+            else if(!validEmail(emailCim1))
+            {
+                uzenoResz.innerHTML="Nem megfelelő az e-mail cím formátuma!"
+            }
+            else if(emailCim1!=emailCim2)
+            {
+                uzenoResz.innerHTML="A két mező értéke nem egyezik!";
+            }
+            else{
+                uzenoResz.innerHTML="Adatok rögzítése sikeres!"
+                uzenoResz.style.backgroundColor="green";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

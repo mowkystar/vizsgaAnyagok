@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telekocsi</title>
+    <link rel="stylesheet" href="telekocsi.css">
+</head>
+
+<body>
+    <div class="tartalom">
+        <h1>Telekocsi</h1>
+        <div class="menu">
+            <ul>
+                <a href="telekocsi.html"><li>Bemutatkozás</li></a>
+                <li>Sofőröknek</li>
+                <li>Utasoknak</li>
+                <li>Bejelentkezés</li>
+                <li>Regisztráció</li>
+            </ul>
+        </div>
+        <h2>Regisztráció</h2>
+        <form>
+            <table>
+                <tr>
+                    <td>Név:</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>E-mail cím:</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>Jelszó:</td>
+                    <td><input type="password" id="pass1"></td>
+                </tr>
+                <tr>
+                    <td>Jelszó ismét:</td>
+                    <td><input type="password" id="pass2"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="button" onclick="PassWDcheck()" value="Mentés"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script>
+        function PassWDcheck()
+        {
+            let passWord1=document.getElementById("pass1").value; 
+            let passWord2=document.getElementById("pass2").value; 
+            if(passWord1=="" && passWord2=="")
+            {
+                alert("A jelszó mezők kitöltése kötelező!");
+            }
+            else if(passWord1=="")
+            {
+                alert("A jelszó mező kitöltése kötelező!");
+            }
+            else if(passWord2=="")
+            {
+                alert("A jelszó ismét mező kitöltése kötelező!");
+            }
+            else if(passWord1!=passWord2)
+            {
+                alert("A jelszavak nem egyeznek!");
+            }
+            else
+            {
+                alert("Sikeres regisztráció!");
+            }
+        }
+    </script>
+</body>
+
+</html>

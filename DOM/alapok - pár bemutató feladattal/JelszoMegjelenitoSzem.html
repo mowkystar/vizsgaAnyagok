@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jelszo Megjelenito Szem</title>
+    <style>
+        img{
+            width:100px;
+            height:100px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <input type="password" name="password" id="jelszoMezo">
+        <img src="zart_szem.png" alt="Elrejtett jelszó szimbólum" title="Jelszó megjelenítése" id="szemIkon" onclick="Lathatosag()">
+    </form>
+    <script>
+        function Lathatosag(){
+            let allapot=jelszoMezo.getAttribute("type");
+            if(allapot=="text"){
+                jelszoMezo.setAttribute("type","password");
+                szemIkon.setAttribute("src","zart_szem.png");
+                szemIkon.setAttribute("alt","Elrejtett jelszó szimbólum");
+                szemIkon.setAttribute("title","Jelszó megjelenítése");
+            }
+            else{
+                jelszoMezo.setAttribute("type","text");
+                szemIkon.setAttribute("src","nyitott_szem.png");
+                szemIkon.setAttribute("alt","Megjelenített jelszó szimbólum");
+                szemIkon.setAttribute("title","Jelszó elrejtése");
+            }
+        }
+    </script>
+</body>
+</html>

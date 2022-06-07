@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM manipulálása JQuery segítségével</title>
+    <style>
+        .nagyBetu{
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="leiras">Adj meg egy <b>szám</b> értéket:</p>
+    <input type="number" id="SzamBeviteliMezo" placeholder="Adj meg egy számot..."><br>
+    <!--Webes elemek értékeinek kiolvasása-->
+    <button type="button" id="textErtekGomb">Szöveg visszaadása: text()</button>
+    <button type="button" id="htmlErtekGomb">HTML kód visszaadása: html()</button>
+
+    <button type="button" id="valueErtekGomb">Input mező értékének visszaadása: val()</button>
+    <button type="button" id="attributumErtekGomb">Elem attribútumának visszaadása: attr()</button>
+    <hr>
+
+    <!--Webes elemek értékeinek módosítása-->
+    <button type="button" id="textModositoGomb">Szöveg módosítása: text()</button>
+    <button type="button" id="htmlModositoGomb">HTML kód módosítása: html()</button>
+
+    <button type="button" id="valueModositoGomb">Input mező értékének módosítása: val()</button>
+    <button type="button" id="attributumModositoGomb">Elem attribútumának módosítása: attr()</button>
+    <hr>
+
+
+    <!--Elemek létrehozása a kódban-->
+    <ul>
+        <li>hide()</li>
+    </ul>
+    <button type="button" id="listaElejetBovitoGomb">Lista elejének bővítése: prepend()</button>
+    <button type="button" id="listaVegetBovitoGomb">Lista végét bővítése: append()</button>
+
+    <button type="button" id="listaElemEleBeszuroGomb">Lista elé elem beszúrása: before()</button>
+    <button type="button" id="listaElemMogeBeszuroGomb">Lista mögé elem beszúrása: after()</button>
+    <hr>
+
+    <!--Elemek törlése a kódból-->
+
+    <button type="button" id="listaKiuriteseGomb">Lista kiürítése: empty()</button>
+    <button type="button" id="listaTorleseGomb">Lista törlése: remove()</button>
+    <hr>
+
+
+    <!--Osztályokkal kapcsolatos művelet-->
+    <button type="button" id="osztalyHozzaadasaGomb">Osztály hozzáadaása leíráshoz: addClass()</button>
+    <button type="button" id="osztalyTorleseGomb">Osztály törlése leírásról: removeClass()</button>
+    <button type="button" id="osztalyKiBeKapcsolasaGomb">Osztály ki-be kapcsolása leíráson: toggleClass()</button>
+    <hr>
+
+
+    <!--CSS-sel kapcsolatos műveletek-->
+    <button type="button" id="cssTulajdonsagKiolvasoGomb">CSS elem tulajdonságának kiolvasása</button>
+    <button type="button" id="cssTulajdonsagModositoGomb">CSS elem tulajdonságának módosítása</button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+
+            //Webes elemek értékeinek kiolvasása
+            $("#textErtekGomb").click(function () {
+                alert("Szöveges tartalom:[" + $("#leiras").text() + "]");
+            });
+
+            $("#htmlErtekGomb").click(function () {
+                alert("HTML kód tartalom:[" + $("#leiras").html() + "]");
+            });
+
+            $("#valueErtekGomb").click(function () {
+                alert("Input mező tartalma:[" + $("#SzamBeviteliMezo").val() + "]");
+            });
+
+            $("#attributumErtekGomb").click(function () {
+                alert("Input mező típusa:[" + $("#SzamBeviteliMezo").attr("type") + "]");
+            });
+
+
+            //Webes elemek értékeinek módosítása
+            $("#textModositoGomb").click(function () {
+                $("#leiras").text("<b>Módosított</b> szövegű elem.")
+            });
+
+            $("#htmlModositoGomb").click(function () {
+                $("#leiras").html("<b>Módosított</b> szövegű elem.")
+            });
+
+            $("#valueModositoGomb").click(function () {
+                $("#SzamBeviteliMezo").val(42);
+            });
+
+            $("#attributumModositoGomb").click(function () {
+                $("#SzamBeviteliMezo").attr("type", "password");
+            });
+
+
+            //Webes elemek létrehozása a html kódban
+            $("#listaElejetBovitoGomb").click(function () {
+                $("ul").prepend("<li>show()</li>");
+            });
+
+            $("#listaVegetBovitoGomb").click(function () {
+                $("ul").append("<li>toggle()</li>");
+            });
+
+            $("#listaElemEleBeszuroGomb").click(function () {
+                $("ul").before("<p>A JQuery elem megjelenítő paracsok</p>")
+            });
+
+            $("#listaElemMogeBeszuroGomb").click(function () {
+                $("ul").after("<p>Segítségükkel egyszerűen készíthetünk egy elem megjelenítő vagy épp elrejtő függvényt</p>")
+            });
+
+
+            //Webes elemek törlésének lehetőségei
+            //EMPTY esetén az elem taratalma ürül ki, ami a későbbiekben ismét bővíthető akár...
+            $("#listaKiuriteseGomb").click(function () {
+                $("ul").empty();
+            });
+
+
+            //REMOVE AZ VESZÉLYES - A teljes elemet törli, későbbiekben az már nem található meg, semmilyen célra!
+            $("#listaTorleseGomb").click(function () {
+                $("ul").remove();
+            });
+
+
+            //Osztályokkal kapcsolatos műveletek
+
+            $("#osztalyHozzaadasaGomb").click(function(){
+                $("#leiras").addClass("nagyBetu");
+            });
+
+            $("#osztalyTorleseGomb").click(function(){
+                $("#leiras").removeClass("nagyBetu");
+            });
+
+            $("#osztalyKiBeKapcsolasaGomb").click(function(){
+                $("#leiras").toggleClass("nagyBetu");
+            });
+
+
+
+            //CSS-sel(stíluslappal) kapcsolatos műveletek
+
+            //CSS értékének kiolvasásan
+            $("#cssTulajdonsagKiolvasoGomb").click(function(){
+                alert("Az leírás elem karaktének formázása:"+$("#leiras").css("textTransform"));
+            });
+            //CSS értékének módosítása
+            $("#cssTulajdonsagModositoGomb").click(function(){
+                $("#leiras").css("textTransform","lowercase");
+            });
+        });
+    </script>
+</body>
+
+</html>

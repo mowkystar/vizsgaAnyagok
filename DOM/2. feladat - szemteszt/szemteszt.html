@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szemteszt feladat</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #szamMegjelenito {
+            flex-direction: row;
+            font-size: 300px;
+            color: black;
+        }
+
+        #randomColor {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 50px;
+            height: 50px;
+            background-image: url("randomSzinek.jpg");
+            border-radius: 25px;
+            background-position: center center;
+            background-size: cover;
+        }
+
+        #nehezsegMertek {
+            position: fixed;
+            top: 0px;
+            left: 50%;
+            width: 600px;
+            transform: translate(-250px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nehezsegMertek">
+        <input type="range" min="0" max="50" value="0" id="mertek">
+        <!--Checkboxok ide jönnek-->
+        <label for="red">Red:</label>
+        <input type="checkbox" id="red">
+        <label for="green">Green:</label>
+        <input type="checkbox" id="green">
+        <label for="blue">Blue</label>
+        <input type="checkbox" id="blue">
+        <p id="ertek">0</p>
+    </div>
+    <div id="szamMegjelenito"></div>
+    <div id="randomColor"></div>
+    <script>
+        mertek.addEventListener('input', ErtekValtozas);
+        function ErtekValtozas() {
+            let elteresMerteke = document.querySelector('#mertek').value;
+            document.querySelector('#ertek').innerHTML = elteresMerteke
+        }
+
+        randomColor.addEventListener('click', FeladvanyGeneralas);
+        function FeladvanyGeneralas() {
+            let r = Math.round(Math.random() * 255);
+            let g = Math.round(Math.random() * 255);
+            let b = Math.round(Math.random() * 255);
+            let szin = "rgb(" + r + "," + g + "," + b + ")";
+            document.body.style.backgroundColor = szin;
+            SzamGenerator();
+            let elteresMerteke = document.querySelector('#mertek').value;
+            if (red.checked) {
+                r = Beallit(Number(r), Number(elteresMerteke));
+            }
+            if (green.checked) {
+                g = Beallit(Number(g), Number(elteresMerteke));
+            }
+            if (blue.checked) {
+                b = Beallit(Number(b), Number(elteresMerteke));
+            }
+            let szamSzin = "rgb(" + r + "," + g + "," + b + ")";
+            document.querySelector('#szamMegjelenito').style.color = szamSzin;
+        }
+
+        function SzamGenerator() {
+            let ujSzam = Math.round(Math.random() * 999);
+            document.querySelector('#szamMegjelenito').innerHTML = ujSzam;
+        }
+
+        function Beallit(eredetiErtek, mertek) {
+            if (eredetiErtek + mertek > 255) {
+                return 255;
+            }
+            else {
+                return Number(eredetiErtek) + Number(mertek);
+            }
+        }
+    </script>
+</body>
+
+</html>

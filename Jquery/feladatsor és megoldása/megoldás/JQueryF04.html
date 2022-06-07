@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery F04 - Víz halmazállapot</title>
+</head>
+<body>
+    <input type="number" name="homerseklet" id="homerseklet" value="27">
+    <input type="button" value="Állapot megjelenítése" id="megjelenitoGomb">
+    <img src="water.jpg" id="allapot">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            $("#megjelenitoGomb").click(function(){
+
+                let fok=$("#homerseklet").val();
+                if(fok<0)
+                {
+                    $("#allapot").attr("src","ice.jpg");
+                }
+                else if(fok>100)
+                {
+                    $("#allapot").attr("src","steam.jpg");
+                }
+                else
+                {
+                    $("#allapot").attr("src","water.jpg");
+                }
+
+
+            });
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery F01 - Megjelenitendo Elem</title>
+    <style>
+        #elemMegjelenito {
+            width: 200px;
+            padding: 20px;
+            text-align: center;
+            margin: 0px auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            font-weight: bold;
+        }
+
+        #megjelenitendoElem {
+            width: 240px;
+            height: 400px;
+            margin: 10px auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: block;
+            box-shadow: 2px 2px 5px black;
+        }
+    </style>
+</head>
+<body>
+    <div id="elemMegjelenito">Elem megjelenítése/elrejtése</div>
+    <div id="megjelenitendoElem"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            $("#elemMegjelenito").click(function(){
+
+                $("#megjelenitendoElem").slideToggle(5000);
+
+            });
+
+        });
+    </script>
+</body>
+</html>

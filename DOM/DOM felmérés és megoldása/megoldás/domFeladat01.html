@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM feladatsor 01</title>
+</head>
+<body>
+    <input type="text" placeholder="Ide írd a szöveget" id="vizsgalandoSzoveg">
+    <p id="karakterSzam">(0 karakter)</p>
+    <script>
+        vizsgalandoSzoveg.addEventListener("input",szovegHossz);
+        function szovegHossz(){
+            let vizsgaltSzoveg=document.querySelector("#vizsgalandoSzoveg").value;
+            let szovegHossz=vizsgaltSzoveg.length;
+            document.querySelector("#karakterSzam").innerHTML="("+szovegHossz+" karakter)";
+        }
+    </script>
+</body>
+</html>

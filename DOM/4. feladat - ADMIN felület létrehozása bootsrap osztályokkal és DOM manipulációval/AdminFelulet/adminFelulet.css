@@ -1,0 +1,17 @@
+body{
+    color:white;
+    font-weight: bold;
+    background-image: linear-gradient(to right, black, grey, black);
+}
+.btn{
+    border:1px solid black;
+    box-shadow: 3px 3px 5px black;
+    margin-top:20px;
+}
+.container{
+    padding:20px;
+    width:500px;
+    border-radius:10px;
+    background-color:rgba(0,0,0,0.5);
+    margin-top:50px;
+}

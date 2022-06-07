@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery alapok</title>
+    <script src="jquery-3.6.0.min.js"></script>
+    <!-- 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    -->
+    <script>
+        $(document).ready(function () {
+
+            $("#hideButton").click(function () {
+                $("#elrejtendoElem").hide();
+            });
+
+            $("#showButton").click(function () {
+                $("#elrejtendoElem").show();
+            });
+
+            $("#toggleButton").click(function () {
+                $("#elrejtendoElem").toggle();
+            });
+
+            //FADE
+            $("#fadeOutButton").click(function () {
+                $("#megjelenitendoElem1").fadeOut();
+                $("#megjelenitendoElem2").fadeOut("slow");
+                $("#megjelenitendoElem3").fadeOut(5000);
+            });
+
+            $("#fadeInButton").click(function () {
+                $("#megjelenitendoElem1").fadeIn();
+                $("#megjelenitendoElem2").fadeIn("fast");
+                $("#megjelenitendoElem3").fadeIn(3000);
+            });
+
+            $("#fadeToggleButton").click(function () {
+                $("#megjelenitendoElem1").fadeToggle();
+                $("#megjelenitendoElem2").fadeToggle("slow");
+                $("#megjelenitendoElem3").fadeToggle(3000);
+            });
+
+            $("#fadeToOdaButton").click(function () {
+                $("#megjelenitendoElem1").fadeTo(0.8);
+                $("#megjelenitendoElem2").fadeTo("slow", 0.6);
+                $("#megjelenitendoElem3").fadeTo("fast", 0.4);
+            });
+
+            $("#fadeToVisszaButton").click(function () {
+                $("#megjelenitendoElem1").fadeTo(1);
+                $("#megjelenitendoElem2").fadeTo("slow", 1);
+                $("#megjelenitendoElem3").fadeTo("fast", 1);
+            });
+
+            //SLIDE
+            $("#slideUpButton").click(function () {
+                $("#slidePanel").slideUp();
+            });
+
+            $("#slideDownButton").click(function () {
+                $("#slidePanel").slideDown();
+            });
+
+            $("#slideToggleButton").click(function () {
+                $("#slidePanel").slideToggle();
+            });
+
+            //ANIMACIO
+            $("#alapAnimacioButton").click(function () {
+                $("#animacioPanel").animate({
+                    left: "200px"
+                });
+            });
+
+            $("#egyszeruAnimacioButton").click(function () {
+                $("#animacioPanel").animate({
+                    left: "200px",
+                    fontSize: '+=4'
+                }, "3000");
+            });
+
+            $("#osszetettAnimacioButton").click(function () {
+
+                $("#animacioPanel").animate({
+                    left: "500px",
+                    fontSize: '+=10'
+                }, "fast");
+
+                $("#animacioPanel").animate({
+                    left: "200px"
+                }, 3000);
+
+                $("#animacioPanel").animate({
+                    left: "100px",
+                    fontSize: '-=2'
+                }, "slow");
+            });
+
+            //CALLBACK
+            $("#hideCallbackButton").click(function () {
+                $("#animacioPanel").hide("slow",
+                    function () {
+                        alert("Az elem el lett rejtve.")
+                    }
+                );
+            });
+
+            //külön is kezelhető, külön függvényként
+            function CallBackAlert() {
+                alert("Ez egy callbackkelt üzenet!");
+            }
+            //Ebben a függvényben hívjuk meg a korábban megírt callback-et
+            $("#showCallbackButton").click(function () {
+                $("#animacioPanel").show("slow", CallBackAlert);
+            });
+
+
+
+            //CHAIN
+            $("#chainFadeButton").click(function () {
+                $("#animacioPanel").fadeOut(3000).fadeIn("slow");
+            });
+
+            $("#chainSlideButton").click(function () {
+                $("#animacioPanel").slideUp(1000).slideDown(2000);
+            });
+
+        });
+    </script>
+    <style>
+        #slidePanel {
+            text-align: center;
+            padding: 50px;
+            background-color: #AAAAAA;
+            border: 3px dashed red;
+            box-shadow: 3px 3px 5px black;
+            margin: 20px;
+        }
+
+        #animacioPanel {
+            padding: 30px;
+            text-align: center;
+            background-color: #CCC;
+            border: 3px dashed red;
+            box-shadow: 3px 3px 5px black;
+            margin: 20px;
+            display: inline-block;
+            position: relative;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <p id="elrejtendoElem">Ez egy egyszerű bekezdés</p>
+    <button type="button" id="hideButton">Elem elrejtése - hide()</button>
+    <button type="button" id="showButton">Elem megjelenítése - show()</button>
+    <button type="button" id="toggleButton">Elem elrejtése/megjelenítése - toggle()</button>
+    <hr>
+    <div id="megjelenitendoElem1" style="background-color: red;">Fade tualjdonságot használó elem</div>
+    <div id="megjelenitendoElem2" style="background-color: green;">Fade tualjdonságot használó elem</div>
+    <div id="megjelenitendoElem3" style="background-color: blue;">Fade tualjdonságot használó elem</div>
+
+    <button type="button" id="fadeOutButton">Elem elrejtése - fadeOut()</button>
+    <button type="button" id="fadeInButton">Elem megjelenítése - fadeIn()</button>
+    <button type="button" id="fadeToggleButton">Elem elrejtése/megjelenítése - fadeToggle()</button>
+    <button type="button" id="fadeToOdaButton">Elem részleges elrejtése - fadeTo()</button>
+    <button type="button" id="fadeToVisszaButton">Elem megjelenítése - fadeTo()</button>
+    <hr>
+
+    <div id="slidePanel">Slide effektet nézzük meg a panel segítségével.</div>
+    <button type="button" id="slideUpButton">Elem elrejtése - slideUp()</button>
+    <button type="button" id="slideDownButton">Elem megjelenítése - slideDown()</button>
+    <button type="button" id="slideToggleButton">Elem elrejtése/megjelenítése - slideToggle()</button>
+    <hr>
+
+    <div id="animacioPanel">Ezen az elemen mutatom be az animációt JQuery-ben</div><br>
+    <button type="button" id="alapAnimacioButton">Egy tulajdonságot módosítok animáció segítségével</button>
+    <button type="button" id="egyszeruAnimacioButton">Több tulajdonságot módosítok animáció segítségével</button>
+    <button type="button" id="osszetettAnimacioButton">Több animációt rendelek hozzá az adott elemhez</button>
+    <hr>
+
+    <button type="button" id="hideCallbackButton">Hide Callback Gomb</button>
+    <button type="button" id="showCallbackButton">Show Callback Gomb</button>
+    <hr>
+    <button type="button" id="chainFadeButton">Chain Fade Gomb</button>
+    <button type="button" id="chainSlideButton">Chain Slide Gomb</button>
+
+</body>
+
+</html>

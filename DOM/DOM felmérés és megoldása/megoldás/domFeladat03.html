@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM feladatsor 03</title>
+    <style>
+        @keyframes Megjelenes {
+            from{
+                opacity:0;
+            }
+            to{
+                opacity:1;
+            }
+        }
+        @keyframes Eltunes {
+            from{
+                opacity:1;
+            }
+            to{
+                opacity:0;
+            }
+        }
+        #macskaKep{
+            width:100px;
+            height:100px;
+            animation-duration:5s;
+            animation-fill-mode:both;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" id="macskaGomb">Macska Elrejtése</button><br>
+    <img src="hidingCat.jpg"  alt="Előjött macska" title="Előjött macska" id="macskaKep">
+
+    <script>
+        macskaGomb.addEventListener("click",CicaAnimacio);
+        function CicaAnimacio(){
+            let allapot=document.querySelector("#macskaKep").style.animationName;
+            if(allapot!="Eltunes")
+            {   
+                document.querySelector("#macskaKep").style.animationName="Eltunes";
+                document.querySelector("#macskaGomb").innerHTML="Macska Előhívása";
+                document.querySelector("#macskaKep").setAttribute("alt","Eltűnt macska");
+                document.querySelector("#macskaKep").setAttribute("title","Eltűnt macska");
+            }
+            else{
+                document.querySelector("#macskaKep").style.animationName="Megjelenes";
+                document.querySelector("#macskaGomb").innerHTML="Macska Elrejtése";
+                document.querySelector("#macskaKep").setAttribute("alt","Előjött macska");
+                document.querySelector("#macskaKep").setAttribute("title","Előjött macska");
+            }
+        }
+    </script>
+</body>
+</html>
